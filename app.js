@@ -10,6 +10,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const profileRoutes = require('./routes/profile');
+const codeRoutes = require('./routes/code');
 
 const app = express();
 
@@ -20,7 +21,8 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
   })
-  .then(() => console.log('DATABASE CONNECTED'));
+  .then(() => console.log('DATABASE CONNECTED'))
+  .catch((error) => console.log(error));
 
 //middlewares
 app.use(morgan('dev'));
@@ -32,8 +34,9 @@ app.use(cors());
 //routes middleware
 app.use(authRoutes); //use app.use("/api", authRoutes) to get deault "/api" in URL, example localhost:3000/api/signin, etc
 app.use(profileRoutes);
+app.use(codeRoutes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   console.log(`Server is running on Port ${port}`);

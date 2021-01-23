@@ -27,10 +27,10 @@ let profile = new Schema({
     required: true,
   },
   linkedIn: {
-    type: String,
+    type: Number,
   },
   github: {
-    type: String,
+    type: Number,
   },
   about: {
     type: String,
